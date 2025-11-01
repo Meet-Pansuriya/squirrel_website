@@ -1,0 +1,29 @@
+:root {
+  --bg: #fff;
+  --fg: #111;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #ff7a00;
+  --radius: 12px;
+  --container: 1200px;
+  --h1: clamp(2rem, 1.2rem + 2.5vw, 3.25rem);
+  --h2: clamp(1.5rem, 1.1rem + 1.5vw, 2.25rem);
+  --lead: 1.125rem;
+  --body: 1rem;
+  --font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --step--1: clamp(0.8125rem, 0.74rem + 0.3vw, 0.9375rem);
+  --step-0: var(--body);
+  --step-1: clamp(1.125rem, 1.08rem + 0.3vw, 1.25rem);
+  --step-2: clamp(1.3125rem, 1.18rem + 0.6vw, 1.5625rem);
+  --step-3: clamp(1.5rem, 1.22rem + 1vw, 2rem);
+  --shadow-soft: 0 20px 45px -20px rgb(17 24 39 / 0.25);
+}
+
+[data-theme="dark"] {
+  --bg: #0b0b0c;
+  --fg: #f6f7f9;
+  --muted: #a1a1aa;
+  --border: #1e1f22;
+  --accent: #ff7a00;
+  --shadow-soft: 0 22px 55px -20px rgb(0 0 0 / 0.45);
+}

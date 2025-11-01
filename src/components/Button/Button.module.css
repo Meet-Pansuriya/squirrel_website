@@ -1,0 +1,54 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 0.75rem 1.75rem;
+  font-size: var(--body);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 150ms ease,
+    background-color 150ms ease,
+    box-shadow 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
+  text-decoration: none;
+  background-color: transparent;
+  color: var(--fg);
+}
+
+.root:focus-visible {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.root:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+}
+
+.primary {
+  background-color: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow-soft);
+}
+
+.primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background-color: color-mix(in srgb, var(--accent) 92%, #ffffff 8%);
+}
+
+.ghost {
+  border-color: var(--border);
+  background-color: color-mix(in srgb, var(--fg) 4%, transparent);
+}
+
+.ghost:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+}

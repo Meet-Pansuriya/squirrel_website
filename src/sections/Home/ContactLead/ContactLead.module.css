@@ -1,0 +1,83 @@
+.section {
+  padding-block: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+.card {
+  border-radius: calc(var(--radius) * 1.4);
+  padding: clamp(2.5rem, 6vw, 4rem);
+  background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--accent) 18%, transparent) 0%,
+      color-mix(in srgb, var(--accent) 8%, transparent) 100%
+    ),
+    color-mix(in srgb, var(--fg) 3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+
+@media (min-width: 900px) {
+  .card {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  color: var(--fg);
+}
+
+.content h2 {
+  margin: 0;
+  font-size: clamp(2rem, 1.4rem + 2vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.content p {
+  margin: 0;
+  font-size: var(--lead);
+  max-width: 36rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 600px) {
+  .formRow {
+    flex-direction: row;
+  }
+}
+
+.input {
+  flex: 1;
+  min-height: 3.25rem;
+  border-radius: calc(var(--radius) * 1.2);
+  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  padding: 0 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: var(--body);
+}
+
+[data-theme="dark"] .input {
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+  color: var(--fg);
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--fg) 70%, transparent);
+}
