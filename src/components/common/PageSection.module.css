@@ -1,0 +1,17 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-left: clamp(1.5rem, 5vw, 3rem);
+  padding-right: clamp(1.5rem, 5vw, 3rem);
+}
+
+.center {
+  text-align: center;
+  align-items: center;
+}

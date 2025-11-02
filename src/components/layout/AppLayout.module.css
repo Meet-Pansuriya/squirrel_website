@@ -1,0 +1,42 @@
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba(245, 247, 248, 0.95), rgba(255, 255, 255, 0.9));
+}
+
+.mainOuter {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 6.5rem clamp(1.5rem, 5vw, 3rem) 4.5rem;
+}
+
+.mainInner {
+  width: min(100%, var(--page-max-width));
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.gridOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(circle at top right, rgba(0, 0, 0, 0.55), transparent 70%);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .mainOuter {
+    padding: 5.5rem 1.25rem 3.5rem;
+  }
+
+  .mainInner {
+    gap: 3rem;
+  }
+}

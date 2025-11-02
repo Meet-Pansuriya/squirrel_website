@@ -1,0 +1,105 @@
+.contactShell {
+  position: relative;
+  padding: clamp(2rem, 5vw, 4rem);
+  border: 1px solid rgba(16, 20, 24, 0.08);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(245, 247, 248, 0.85));
+  box-shadow: 0 24px 48px rgba(16, 20, 24, 0.08);
+  overflow: hidden;
+}
+
+.dotGrid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(16, 20, 24, 0.14) 0.8px, transparent 0.8px);
+  background-size: 14px 14px;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.contactHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 480px;
+}
+
+.contactTitle {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.contactSubtitle {
+  color: var(--color-text-subtle);
+}
+
+.infoGrid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) minmax(220px, 2fr);
+  gap: 2rem 1.5rem;
+  position: relative;
+}
+
+.infoGrid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(16, 20, 24, 0.08);
+}
+
+.infoRow {
+  display: contents;
+}
+
+.infoLabel {
+  font-family: 'Space Grotesk', var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  padding-top: 1.5rem;
+}
+
+.infoValue {
+  padding-top: 1.5rem;
+  font-size: 0.98rem;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+.infoValue a {
+  color: inherit;
+  font-weight: 500;
+}
+
+.footerNote {
+  margin-top: 2.5rem;
+  font-size: 0.85rem;
+  color: var(--color-text-faint);
+}
+
+@media (max-width: 640px) {
+  .contactShell {
+    padding: 2rem;
+    border-radius: 18px;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .infoGrid::before {
+    display: none;
+  }
+
+  .infoLabel,
+  .infoValue {
+    padding-top: 0;
+  }
+}
