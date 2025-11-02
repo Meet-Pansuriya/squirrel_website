@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Product Catalog - EngiCorp</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        .blueprint-grid {
+            background-image:
+                linear-gradient(rgba(224, 224, 224, 0.4) 1px, transparent 1px),
+                linear-gradient(to right, rgba(224, 224, 224, 0.4) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0d7ff2",
+              "background-light": "#ffffff",
+              "background-dark": "#101922",
+              "text-light": "#111418",
+              "text-dark": "#f5f7f8",
+              "border-light": "#e0e0e0",
+              "border-dark": "#2a3b4c",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center">
+<div class="layout-content-container flex flex-col w-full max-w-5xl flex-1 px-4 sm:px-8">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light dark:border-border-dark py-4">
+<div class="flex items-center gap-4 text-text-light dark:text-text-dark">
+<div class="size-5 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold tracking-[-0.015em]">EngiCorp</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end">
+<nav class="flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary dark:hover:text-primary" href="#">Home</a>
+<a class="text-sm font-medium text-primary" href="#">Products</a>
+<a class="text-sm font-medium hover:text-primary dark:hover:text-primary" href="#">Support</a>
+<a class="text-sm font-medium hover:text-primary dark:hover:text-primary" href="#">Contact</a>
+</nav>
+</div>
+</header>
+<main class="py-16 sm:py-24">
+<div class="flex flex-wrap justify-start gap-3 pb-16 sm:pb-24">
+<h1 class="text-4xl sm:text-5xl font-bold tracking-tighter">Product Catalog</h1>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center py-16">
+<div class="relative w-full aspect-square blueprint-grid dark:blueprint-grid-dark p-4">
+<img class="w-full h-full object-contain mix-blend-darken dark:mix-blend-lighten scale-90" data-alt="Thin-line engineering diagram of an oil-lubricated compressor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvveeNjqGxHR6yhlocnorei_PjEmKJQzEYApJE4YEwsuQNc1J5Yv9QJsN5Wihnn4R479RzH71CybDxfcUiQcvZaCm5xa00LsxuefCK8y89maeaViiTG2UX0bp6sb9EEyGm4FFruR44vIUp82Z7Hubr4gVm9O-QpCvz3sOMn0kgUwtM5TG3IsD_QJGWHt9H1y9XTKuppIKesi-rHrt5ejDDeiDmjaaz5tsZSpFftXduxROynacx8TL3267qJVVjB3BDT2V0__6jWic"/>
+</div>
+<div>
+<h2 class="text-2xl sm:text-3xl font-bold tracking-tight">JET Series — Oil-Lubricated Compressors</h2>
+<div class="mt-4 border-t border-border-light dark:border-border-dark pt-4 space-y-2">
+<p class="text-xs text-slate-500 dark:text-slate-400">8 bar max pressure</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">0.75–1.5 HP motor range</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Up to 22.8 CFM air delivery</p>
+</div>
+<p class="text-base font-normal leading-normal text-slate-600 dark:text-slate-400 mt-4">Reliable belt-driven compressors built for workshops and industrial use.</p>
+<a class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400 mt-6 group hover:text-text-light dark:hover:text-text-dark transition-colors" href="#">
+                                    View Models
+                                    <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+<hr class="border-t border-border-light dark:border-border-dark my-16"/>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center py-16">
+<div class="md:order-2">
+<div class="relative w-full aspect-square blueprint-grid dark:blueprint-grid-dark p-4">
+<img class="w-full h-full object-contain mix-blend-darken dark:mix-blend-lighten scale-90" data-alt="Thin-line engineering diagram of an oil-free silent compressor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmPSs8V7ew77-N5IppSD5yS9eKkgbx9Ihm01tpVHlJc6wmlXQpeeCQTjrSFdFgN-afiBP4Yprc27bL7PEAPaMfHRFlCvEP7KTyx1cle2VGlm8YKxD6XXebQbBo2lbOJdIf71A4ijD4aekualFRZgcZ0IiH0jnSQ2kdPUJHB9SzrxVzWMaV_qTwOiWtL3JxCF1XhrW8wMEQPB1MRkTgqHZjlSKAhhBM5oyHZK_WIUgsK2p3oDb8G6LNvnRGbgdjJWNCS9b0yiOJRa4"/>
+</div>
+</div>
+<div class="md:order-1 md:text-right md:flex md:flex-col md:items-end">
+<h2 class="text-2xl sm:text-3xl font-bold tracking-tight">SILENT Series — Oil-Free Compressors</h2>
+<div class="mt-4 border-t border-border-light dark:border-border-dark pt-4 space-y-2">
+<p class="text-xs text-slate-500 dark:text-slate-400">&lt;70 dB quiet operation</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Up to 3.0 kW power</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Tank capacity up to 105 L</p>
+</div>
+<p class="text-base font-normal leading-normal text-slate-600 dark:text-slate-400 mt-4">Low-noise, oil-free compressors designed for clinics, labs, and indoor environments.</p>
+<a class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400 mt-6 group hover:text-text-light dark:hover:text-text-dark transition-colors" href="#">
+                                    View Models
+                                    <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+<hr class="border-t border-border-light dark:border-border-dark my-16"/>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center py-16">
+<div class="relative w-full aspect-square blueprint-grid dark:blueprint-grid-dark p-4">
+<img class="w-full h-full object-contain mix-blend-multiply dark:mix-blend-lighten scale-90" data-alt="Thin-line engineering diagram of a vulcanizing machine" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm8-3xV6yMayb3jM4l7-nRhbnfX-Ao5_mqQXNTVUA7Gs1Jw9kJev4fSvkmXuA_c5J9rHaMWxh2s_tfKLyrQ_GGzcXBSB7VvxYqvMkYY9pJyTbuYN1XrKkzjdwABTrnhGDIP2VEnIX8m5OsulT9sbHuTUAGoEozzldTSn-m8UD7C-5e8gZL5txuh67vu-V5rZpMhpY-wlb5LUOVph-wcqzBcGEHzWlgM4DUestrw_fp19D4JgQ4nK5D6GT8HrErnquEle817iCZ1mA"/>
+</div>
+<div>
+<h2 class="text-2xl sm:text-3xl font-bold tracking-tight">SPIDER Series — Vulcanizing Machines</h2>
+<div class="mt-4 border-t border-border-light dark:border-border-dark pt-4 space-y-2">
+<p class="text-xs text-slate-500 dark:text-slate-400">750–1500 W heating plates</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Portable and industrial variants</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Automatic thermal protection</p>
+</div>
+<p class="text-base font-normal leading-normal text-slate-600 dark:text-slate-400 mt-4">High-performance vulcanizers for rapid bonding and tyre repairs.</p>
+<a class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400 mt-6 group hover:text-text-light dark:hover:text-text-dark transition-colors" href="#">
+                                    View Models
+                                    <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+<hr class="border-t border-border-light dark:border-border-dark my-16"/>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center py-16">
+<div class="md:order-2">
+<div class="relative w-full aspect-square blueprint-grid dark:blueprint-grid-dark p-4">
+<img class="w-full h-full object-contain mix-blend-darken dark:mix-blend-lighten scale-90" data-alt="Thin-line engineering diagram of a pressure switch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO_S_6NbAvuLAXhT2ZddTXRUV2TTpeBkXNhtM8JjGadElYD5LUZMqF3FBml_jVY4SoKplvX2JaOtBO4Vb0E8JUsdyS5Q5EKiOJN-OXDRU8aAlaPzr5QoLp-Ld8B1hzOVsmA6BoMiCxXRb106kMjp-IuaoEcZKF2cr_zEGX1q81UvAWE_DNVDhOsCIvMku0d8sOPJlFNi5htGmaUsvt9F6MVz7tiO4t_kF1bQPm91Q80mdLTsQcHsXCSWGqEgQ8CbDZBilcGXqvVz8"/>
+</div>
+</div>
+<div class="md:order-1 md:text-right md:flex md:flex-col md:items-end">
+<h2 class="text-2xl sm:text-3xl font-bold tracking-tight">FORCE Series — Pressure Switches</h2>
+<div class="mt-4 border-t border-border-light dark:border-border-dark pt-4 space-y-2">
+<p class="text-xs text-slate-500 dark:text-slate-400">150 PSI max pressure</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">¼” BSP 4-port design</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Auto cut-in/cut-out</p>
+</div>
+<p class="text-base font-normal leading-normal text-slate-600 dark:text-slate-400 mt-4">Durable, accurate pressure controls for heavy-duty compressor systems.</p>
+<a class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400 mt-6 group hover:text-text-light dark:hover:text-text-dark transition-colors" href="#">
+                                    View Models
+                                    <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>
