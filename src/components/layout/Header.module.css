@@ -50,7 +50,7 @@
 }
 
 .navLink::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: 0;
@@ -73,16 +73,129 @@
   background: var(--color-primary);
 }
 
-@media (max-width: 768px) {
-  .inner {
-    padding: 1rem 1.25rem;
-  }
+.navWrapper {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+}
 
-  .nav {
-    gap: 1rem;
+.menuToggle {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 20, 24, 0.12);
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.menuToggle svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.menuToggle:hover,
+.menuToggle:focus-visible {
+  border-color: rgba(13, 127, 242, 0.45);
+  box-shadow: 0 10px 24px rgba(13, 127, 242, 0.12);
+}
+
+.menuLabel {
+  letter-spacing: 0.12em;
+}
+
+.mobileScrim {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    padding: 0.9rem var(--layout-gutter-tight);
+    gap: clamp(0.75rem, 3vw, 1.25rem);
   }
 
   .brand {
     font-size: 0.95rem;
+  }
+
+  .navWrapper {
+    position: relative;
+  }
+
+  .nav {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    left: 50%;
+    width: min(360px, calc(100vw - var(--layout-gutter-tight) * 2));
+    transform: translate(-50%, -12px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(16, 20, 24, 0.08);
+    box-shadow: 0 24px 48px rgba(16, 20, 24, 0.16);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0.2s ease;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 30;
+  }
+
+  .navOpen {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+  }
+
+  .navLink {
+    width: 100%;
+    padding: 0.65rem 0;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(16, 20, 24, 0.08);
+  }
+
+  .navLink:last-child {
+    border-bottom: none;
+  }
+
+  .navLink::after {
+    display: none;
+  }
+
+  .menuToggle {
+    display: inline-flex;
+  }
+
+  .mobileScrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 15;
+  }
+
+  .mobileScrimVisible {
+    opacity: 1;
+    pointer-events: auto;
   }
 }

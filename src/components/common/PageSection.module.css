@@ -4,6 +4,12 @@
   gap: 2.5rem;
 }
 
+@media (max-width: 640px) {
+  .section {
+    gap: 2rem;
+  }
+}
+
 .bleed {
   width: 100vw;
   margin-left: calc(50% - 50vw);

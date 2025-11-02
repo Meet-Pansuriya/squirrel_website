@@ -1,92 +1,97 @@
-import { AnimatePresence, motion } from 'framer-motion'
-import clsx from 'clsx'
-import { Fragment, useEffect, useMemo, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import PageSection from '../components/common/PageSection'
-import SectionHeader from '../components/common/SectionHeader'
-import type { ProductModel, SpecField } from '../data/products'
-import { productCatalogBySlug } from '../data/products'
-import styles from './ProductDetailPage.module.css'
+import { AnimatePresence, motion } from "framer-motion";
+import clsx from "clsx";
+import { Fragment, useEffect, useMemo, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import PageSection from "../components/common/PageSection";
+import SectionHeader from "../components/common/SectionHeader";
+import type { ProductModel, SpecField } from "../data/products";
+import { productCatalogBySlug } from "../data/products";
+import styles from "./ProductDetailPage.module.css";
 
 const formatSpecValue = (field: SpecField, model: ProductModel) => {
   const parts = field.entries
     .map((entry) => {
       const rawValue =
-        entry.key === '__code'
+        entry.key === "__code"
           ? model.code
-          : entry.key === '__title'
+          : entry.key === "__title"
             ? model.title
-            : model.specs[entry.key] ?? ''
+            : (model.specs[entry.key] ?? "");
 
       if (!rawValue) {
-        return ''
+        return "";
       }
 
-      const prefix = entry.prefix ?? ''
-      const suffix = entry.suffix ?? ''
-      return `${prefix}${rawValue}${suffix}`
+      const prefix = entry.prefix ?? "";
+      const suffix = entry.suffix ?? "";
+      return `${prefix}${rawValue}${suffix}`;
     })
-    .filter(Boolean)
+    .filter(Boolean);
 
   if (parts.length === 0) {
-    return '—'
+    return "—";
   }
 
   if (parts.length === 1) {
-    return parts[0]
+    return parts[0];
   }
 
-  const joiner = field.joiner ?? ' / '
-  return parts.join(joiner)
-}
+  const joiner = field.joiner ?? " / ";
+  return parts.join(joiner);
+};
 
 const ProductDetailPage = () => {
-  const { productSlug } = useParams<{ productSlug: string }>()
-  const category = productSlug ? productCatalogBySlug[productSlug] : undefined
+  const { productSlug } = useParams<{ productSlug: string }>();
+  const category = productSlug ? productCatalogBySlug[productSlug] : undefined;
 
-  const [activeModelCode, setActiveModelCode] = useState<string>()
-  const [isZoomed, setIsZoomed] = useState(false)
+  const [activeModelCode, setActiveModelCode] = useState<string>();
+  const [isZoomed, setIsZoomed] = useState(false);
 
   useEffect(() => {
     if (category?.models.length) {
-      setActiveModelCode(category.models[0].code)
+      setActiveModelCode(category.models[0].code);
     }
-  }, [category])
+  }, [category]);
 
   useEffect(() => {
-    setIsZoomed(false)
-  }, [activeModelCode])
+    setIsZoomed(false);
+  }, [activeModelCode]);
 
   const selectedModel = useMemo(() => {
     if (!category) {
-      return undefined
+      return undefined;
     }
-    return category.models.find((model) => model.code === activeModelCode) ?? category.models[0]
-  }, [activeModelCode, category])
+    return (
+      category.models.find((model) => model.code === activeModelCode) ??
+      category.models[0]
+    );
+  }, [activeModelCode, category]);
 
   useEffect(() => {
     if (!isZoomed) {
-      return
+      return;
     }
     const handler = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsZoomed(false)
+      if (event.key === "Escape") {
+        setIsZoomed(false);
       }
-    }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [isZoomed])
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [isZoomed]);
 
   if (!category || !selectedModel) {
     return (
       <PageSection align="center">
         <div className={styles.assistCard}>
           <h2>Product range not found</h2>
-          <p>The product category you are looking for is no longer available.</p>
+          <p>
+            The product category you are looking for is no longer available.
+          </p>
           <Link to="/products">Return to catalog</Link>
         </div>
       </PageSection>
-    )
+    );
   }
 
   return (
@@ -104,7 +109,9 @@ const ProductDetailPage = () => {
               <div key={metric.label} className={styles.metricCard}>
                 <span className={styles.metricValue}>{metric.value}</span>
                 <span>{metric.label}</span>
-                {metric.detail ? <span className={styles.metricDetail}>{metric.detail}</span> : null}
+                {metric.detail ? (
+                  <span className={styles.metricDetail}>{metric.detail}</span>
+                ) : null}
               </div>
             ))}
           </div>
@@ -124,7 +131,10 @@ const ProductDetailPage = () => {
                   key={model.code}
                   type="button"
                   onClick={() => setActiveModelCode(model.code)}
-                  className={clsx(styles.modelButton, model.code === selectedModel.code && styles.modelActive)}
+                  className={clsx(
+                    styles.modelButton,
+                    model.code === selectedModel.code && styles.modelActive
+                  )}
                 >
                   {model.code}
                 </button>
@@ -144,7 +154,9 @@ const ProductDetailPage = () => {
                 <div className={styles.modelHero}>
                   <div className={styles.modelCopy}>
                     <h2>{selectedModel.title}</h2>
-                    <p className={styles.modelDescription}>{selectedModel.description}</p>
+                    <p className={styles.modelDescription}>
+                      {selectedModel.description}
+                    </p>
                     {selectedModel.tags.length ? (
                       <div className={styles.tagList}>
                         {selectedModel.tags.map((tag) => (
@@ -155,16 +167,23 @@ const ProductDetailPage = () => {
                       </div>
                     ) : null}
                   </div>
-                  <div className={styles.modelMedia}>
+                  <div
+                    onClick={() => setIsZoomed(true)}
+                    aria-label="Open large product image"
+                    className={styles.modelMedia}
+                  >
                     <button
                       type="button"
                       className={styles.zoomButton}
-                      onClick={() => setIsZoomed(true)}
                       aria-label="Open large product image"
                     >
-                      <img src={selectedModel.image} alt={`${selectedModel.title} render`} loading="lazy" />
-                      <span className={styles.zoomHint}>Click to zoom</span>
+                      <img
+                        src={selectedModel.image}
+                        alt={`${selectedModel.title} render`}
+                        loading="lazy"
+                      />
                     </button>
+                    <span className={styles.zoomHint}>Click to zoom</span>
                   </div>
                 </div>
 
@@ -174,7 +193,9 @@ const ProductDetailPage = () => {
                     {category.specFields.map((field) => (
                       <Fragment key={field.label}>
                         <span className={styles.specLabel}>{field.label}</span>
-                        <span className={styles.specValue}>{formatSpecValue(field, selectedModel)}</span>
+                        <span className={styles.specValue}>
+                          {formatSpecValue(field, selectedModel)}
+                        </span>
                       </Fragment>
                     ))}
                   </div>
@@ -214,10 +235,17 @@ const ProductDetailPage = () => {
 
             {category.downloads && category.downloads.length ? (
               <div>
-                <SectionHeader title="Downloads" description="Specification packs and documentation." />
+                <SectionHeader
+                  title="Downloads"
+                  description="Specification packs and documentation."
+                />
                 <div className={styles.downloadRow}>
                   {category.downloads.map((download) => (
-                    <a key={download.label} href={download.url} className={styles.download}>
+                    <a
+                      key={download.label}
+                      href={download.url}
+                      className={styles.download}
+                    >
                       {download.label}
                     </a>
                   ))}
@@ -231,8 +259,13 @@ const ProductDetailPage = () => {
       <PageSection align="center">
         <div className={styles.assistCard}>
           <h2>Need assistance choosing a configuration?</h2>
-          <p>Our engineering team can help match specifications to your application.</p>
-          <a href="mailto:contact@squirrel-engitech.com">contact@squirrel-engitech.com</a>
+          <p>
+            Our engineering team can help match specifications to your
+            application.
+          </p>
+          <a href="mailto:contact@squirrel-engitech.com">
+            contact@squirrel-engitech.com
+          </a>
         </div>
       </PageSection>
 
@@ -254,18 +287,25 @@ const ProductDetailPage = () => {
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               onClick={(event) => event.stopPropagation()}
             >
-              <button type="button" className={styles.zoomClose} onClick={() => setIsZoomed(false)}>
+              <button
+                type="button"
+                className={styles.zoomClose}
+                onClick={() => setIsZoomed(false)}
+              >
                 Close ×
               </button>
               <div className={styles.zoomFrame}>
-                <img src={selectedModel.image} alt={`${selectedModel.title} zoomed`} />
+                <img
+                  src={selectedModel.image}
+                  alt={`${selectedModel.title} zoomed`}
+                />
               </div>
             </motion.div>
           </motion.div>
         ) : null}
       </AnimatePresence>
     </>
-  )
-}
+  );
+};
 
-export default ProductDetailPage
+export default ProductDetailPage;

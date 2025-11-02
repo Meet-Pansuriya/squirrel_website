@@ -363,6 +363,98 @@
   color: var(--color-primary);
 }
 
+@media (max-width: 960px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroIllustration {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .familyRow {
+    grid-template-columns: 1fr;
+  }
+
+  .familyMedia {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero {
+    gap: 1.75rem;
+  }
+
+  .heroTitle {
+    font-size: clamp(2.1rem, 8vw, 2.75rem);
+  }
+
+  .heroDescription {
+    font-size: 1rem;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .primaryLink,
+  .secondaryLink {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .secondaryLink {
+    padding: 0.65rem 0;
+    border-radius: 999px;
+    border: 1px solid rgba(16, 20, 24, 0.12);
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .familyMedia {
+    width: 100%;
+  }
+
+  .familyHeader p {
+    max-width: unset;
+  }
+
+  .familyMetrics {
+    grid-template-columns: 1fr;
+  }
+
+  .valueGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .commitmentCopy {
+    font-size: 0.97rem;
+  }
+
+  .qualitySection {
+    grid-template-columns: 1fr;
+  }
+
+  .qualityMedia {
+    aspect-ratio: 4 / 3;
+  }
+
+  .qualityItem {
+    align-items: flex-start;
+  }
+
+  .ctaTitle {
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+  }
+}
+
 @media (max-width: 600px) {
   .heroIllustration {
     border-radius: 18px;
@@ -371,5 +463,19 @@
   .statCard {
     align-items: center;
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .familyMedia {
+    margin: 0;
+  }
+
+  .qualityMedia {
+    aspect-ratio: 3 / 2;
   }
 }

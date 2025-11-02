@@ -130,3 +130,52 @@
   height: 100%;
   color: rgba(13, 127, 242, 0.9);
 }
+
+@media (max-width: 720px) {
+  .introGrid {
+    gap: 1.5rem;
+  }
+
+  .introTitle {
+    font-size: clamp(2rem, 7vw, 2.6rem);
+  }
+
+  .introBody {
+    gap: 1.25rem;
+    font-size: 0.98rem;
+  }
+
+  .pillarsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .pillarCard {
+    padding: 1.5rem;
+  }
+
+  .philosophySection {
+    grid-template-columns: 1fr;
+  }
+
+  .blueprintPanel {
+    max-width: 420px;
+    padding: 1.75rem;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .introBody {
+    font-size: 0.95rem;
+  }
+
+  .pillarCard p,
+  .philosophyText {
+    font-size: 0.95rem;
+  }
+
+  .blueprintPanel {
+    padding: 1.5rem;
+    border-radius: 18px;
+  }
+}

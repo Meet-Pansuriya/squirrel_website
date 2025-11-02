@@ -102,3 +102,40 @@
   font-weight: 600;
   font-size: 0.9rem;
 }
+
+@media (max-width: 900px) {
+  .reverse {
+    direction: ltr;
+  }
+}
+
+@media (max-width: 720px) {
+  .catalogItem {
+    grid-template-columns: 1fr;
+  }
+
+  .catalogMedia {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .metrics {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .pageIntro {
+    gap: 1rem;
+  }
+
+  .catalogMedia {
+    padding: 1.5rem;
+    border-radius: 18px;
+  }
+
+  .catalogContent h3 {
+    font-size: clamp(1.4rem, 6vw, 1.7rem);
+  }
+}
