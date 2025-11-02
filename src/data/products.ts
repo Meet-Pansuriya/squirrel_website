@@ -1,3 +1,5 @@
+import specsCsv from './squirrel_master_products.csv?raw'
+
 const productImageModules = import.meta.glob('../assets/Products/*.png', {
   eager: true,
   import: 'default',
@@ -14,6 +16,148 @@ const getImage = (fileName: string) => {
   return value
 }
 
+type SpecRecord = Record<string, string>
+
+const productSpecsByModel = (() => {
+  const lines = specsCsv
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+
+  if (lines.length === 0) {
+    return {} as Record<string, SpecRecord>
+  }
+
+  const headers = lines[0].split(',').map((header) => header.trim())
+  return lines.slice(1).reduce((acc, line) => {
+    const values = line.split(',')
+    while (values.length < headers.length) {
+      values.push('')
+    }
+    const record: Record<string, string> = {}
+    headers.forEach((header, index) => {
+      record[header] = values[index]?.trim() ?? ''
+    })
+    const model = record['Model']
+    if (model) {
+      const cleaned: SpecRecord = { Model: model }
+      Object.entries(record).forEach(([key, value]) => {
+        if (key === 'Model' || key === 'Category') {
+          return
+        }
+        if (value) {
+          cleaned[key] = value
+        }
+      })
+      acc[model] = cleaned
+    }
+    return acc
+  }, {} as Record<string, SpecRecord>)
+})()
+
+const getSpecRecord = (code: string): SpecRecord => productSpecsByModel[code] ?? { Model: code }
+
+const jetSpecFields: SpecField[] = [
+  { label: 'Model', entries: [{ key: '__code' }] },
+  {
+    label: 'Motor',
+    joiner: ' / ',
+    entries: [
+      { key: 'Motor HP', suffix: ' HP' },
+      { key: 'Motor kW', suffix: ' kW' },
+    ],
+  },
+  {
+    label: 'Max Pressure',
+    joiner: ' / ',
+    entries: [
+      { key: 'Max Pressure (bar)', suffix: ' bar' },
+      { key: 'Max Pressure (psi)', suffix: ' psi' },
+    ],
+  },
+  {
+    label: 'Piston Displacement',
+    joiner: ' / ',
+    entries: [
+      { key: 'Piston Displacement (CFM)', suffix: ' CFM' },
+      { key: 'Piston Displacement (L/min)', suffix: ' L/min' },
+    ],
+  },
+  {
+    label: 'Free Air Delivery',
+    joiner: ' / ',
+    entries: [
+      { key: 'Free Air Delivery (CFM)', suffix: ' CFM' },
+      { key: 'Free Air Delivery (L/min)', suffix: ' L/min' },
+    ],
+  },
+  { label: 'Motor Speed', entries: [{ key: 'RPM', suffix: ' RPM' }] },
+  { label: 'Pistons', entries: [{ key: 'Pistons (nos)', suffix: ' nos' }] },
+  { label: 'Cylinder', entries: [{ key: 'Cylinder (mm)', suffix: ' mm' }] },
+  { label: 'Air Receiver', entries: [{ key: 'Tank (L)', suffix: ' L' }] },
+  { label: 'Receiver Thickness', entries: [{ key: 'Tank Thickness (mm)', suffix: ' mm' }] },
+  { label: 'Voltage', entries: [{ key: 'Voltage (V/Hz/Ph)' }] },
+  { label: 'Weight', entries: [{ key: 'Weight (kg)', suffix: ' kg' }] },
+  { label: 'Dimensions', entries: [{ key: 'Dimensions (L×W×H mm)' }] },
+  { label: 'Variant', entries: [{ key: 'Variant' }] },
+]
+
+const silentSpecFields: SpecField[] = [
+  { label: 'Model', entries: [{ key: '__code' }] },
+  {
+    label: 'Motor',
+    joiner: ' / ',
+    entries: [
+      { key: 'Motor HP', suffix: ' HP' },
+      { key: 'Motor kW', suffix: ' kW' },
+    ],
+  },
+  {
+    label: 'Max Pressure',
+    joiner: ' / ',
+    entries: [
+      { key: 'Max Pressure (bar)', suffix: ' bar' },
+      { key: 'Max Pressure (psi)', suffix: ' psi' },
+    ],
+  },
+  {
+    label: 'Piston Displacement',
+    entries: [{ key: 'Piston Displacement (L/min)', suffix: ' L/min' }],
+  },
+  {
+    label: 'Free Air Delivery',
+    entries: [{ key: 'Free Air Delivery (L/min)', suffix: ' L/min' }],
+  },
+  { label: 'Noise', entries: [{ key: 'Noise (dB)', suffix: ' dB' }] },
+  { label: 'Motor Speed', entries: [{ key: 'RPM', suffix: ' RPM' }] },
+  { label: 'Air Receiver', entries: [{ key: 'Tank (L)', suffix: ' L' }] },
+  { label: 'Receiver Thickness', entries: [{ key: 'Tank Thickness (mm)', suffix: ' mm' }] },
+  { label: 'Voltage', entries: [{ key: 'Voltage (V/Hz/Ph)' }] },
+  { label: 'Weight', entries: [{ key: 'Weight (kg)', suffix: ' kg' }] },
+  { label: 'Dimensions', entries: [{ key: 'Dimensions (L×W×H mm)' }] },
+  { label: 'Variant', entries: [{ key: 'Variant' }] },
+]
+
+const spiderSpecFields: SpecField[] = [
+  { label: 'Model', entries: [{ key: '__code' }] },
+  { label: 'Power', entries: [{ key: 'Power (W)', suffix: ' W' }] },
+  { label: 'Voltage', entries: [{ key: 'Voltage' }] },
+  { label: 'Heating Plate', entries: [{ key: 'Dimensions (mm)' }] },
+  { label: 'Weight', entries: [{ key: 'Weight (kg)', suffix: ' kg' }] },
+]
+
+const forceSpecFields: SpecField[] = [
+  { label: 'Model', entries: [{ key: '__code' }] },
+  { label: 'Type', entries: [{ key: 'Type' }] },
+  { label: 'Voltage', entries: [{ key: 'Voltage (V)', suffix: ' V' }] },
+  { label: 'Amp Rating', entries: [{ key: 'Amp Rating', suffix: ' A' }] },
+  { label: 'Ports', entries: [{ key: 'Ports' }] },
+  { label: 'Max Pressure', entries: [{ key: 'Max Pressure' }] },
+  { label: 'Joint Thread', entries: [{ key: 'Joint Thread' }] },
+  { label: 'Relief Valve', entries: [{ key: 'Relief Valve' }] },
+  { label: 'Phase', entries: [{ key: 'Phase' }] },
+]
+
 export type ProductMetric = {
   label: string
   value: string
@@ -25,12 +169,25 @@ export type ProductFeature = {
   description: string
 }
 
+export type SpecFieldEntry = {
+  key: string
+  prefix?: string
+  suffix?: string
+}
+
+export type SpecField = {
+  label: string
+  entries: SpecFieldEntry[]
+  joiner?: string
+}
+
 export type ProductModel = {
   code: string
   title: string
   description: string
   image: string
   tags: string[]
+  specs: SpecRecord
 }
 
 export type ProductCategory = {
@@ -47,6 +204,7 @@ export type ProductCategory = {
   differentiators: ProductFeature[]
   qualityNotes: ProductFeature[]
   models: ProductModel[]
+  specFields: SpecField[]
   downloads?: { label: string; url: string }[]
 }
 
@@ -99,6 +257,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Compact footprint with horizontal 100-litre storage for light industrial bays.',
         image: getImage('JET-S100H25LACA.png'),
         tags: ['100 L tank', 'Balanced for starter workflows', 'Single-phase ready'],
+        specs: getSpecRecord('JET-S100H25LACA'),
       },
       {
         code: 'JET-S100H25LACB',
@@ -106,6 +265,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Adds quick-service manifold controls for multi-tool stations.',
         image: getImage('JET-S100H25LACB.png'),
         tags: ['Remote drain kit', 'Dual outlet block', 'Enhanced cooling shroud'],
+        specs: getSpecRecord('JET-S100H25LACB'),
       },
       {
         code: 'JET-S100H25LACC',
@@ -113,6 +273,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Includes reinforced motor base for rough-duty shop environments.',
         image: getImage('JET-S100H25LACC.png'),
         tags: ['Heavy floor anchor', 'Premium belt guard', 'Service counter included'],
+        specs: getSpecRecord('JET-S100H25LACC'),
       },
       {
         code: 'JET-S150H25LACA',
@@ -120,6 +281,7 @@ export const productCatalog: ProductCategory[] = [
         description: '150-litre tank capacity for higher air reserve and fewer motor cycles.',
         image: getImage('JET-S150H25LACA.png'),
         tags: ['150 L tank', 'Low cycle demand', 'Single-phase core'],
+        specs: getSpecRecord('JET-S150H25LACA'),
       },
       {
         code: 'JET-S150H25LACB',
@@ -127,6 +289,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Shop-ready configuration with isolation mounts and staged filtration.',
         image: getImage('JET-S150H25LACB.png'),
         tags: ['Isolation mounts', 'Quick-change filters', 'Shop floor kit'],
+        specs: getSpecRecord('JET-S150H25LACB'),
       },
       {
         code: 'JET-S150H25LACC',
@@ -134,6 +297,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Enhanced cooling and belt longevity for continuous heavy-load applications.',
         image: getImage('JET-S150H25LACC.png'),
         tags: ['High airflow shroud', 'Wear-resistant belts', 'Long-cycle duty'],
+        specs: getSpecRecord('JET-S150H25LACC'),
       },
       {
         code: 'JET-S150H40LACA',
@@ -141,6 +305,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'High-output variant tuned for toolrooms with extended airflow demand.',
         image: getImage('JET-S150H40LACA.png'),
         tags: ['High CFM tier', 'Extended duty motor', 'Toolroom ready'],
+        specs: getSpecRecord('JET-S150H40LACA'),
       },
       {
         code: 'JET-S150H40LACB',
@@ -148,6 +313,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Integrated aftercooler assembly keeps delivery temperatures controlled.',
         image: getImage('JET-S150H40LACB.png'),
         tags: ['Aftercooler', 'Condensate management', 'Thermal monitor'],
+        specs: getSpecRecord('JET-S150H40LACB'),
       },
       {
         code: 'JET-S150H40LACC',
@@ -155,6 +321,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Adds tri-phase compatibility and heavy-duty motor protection.',
         image: getImage('JET-S150H40LACC.png'),
         tags: ['Three-phase ready', 'Thermal overload guard', 'Panel interface'],
+        specs: getSpecRecord('JET-S150H40LACC'),
       },
       {
         code: 'JET-S150H60LACA',
@@ -162,6 +329,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Extended reserve for pneumatic lines supporting simultaneous operations.',
         image: getImage('JET-S150H60LACA.png'),
         tags: ['60 Hz tune', 'Parallel tool support', 'Continuous service'],
+        specs: getSpecRecord('JET-S150H60LACA'),
       },
       {
         code: 'JET-S150H60LACB',
@@ -169,6 +337,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Full-feature assembly with multi-port distribution and vibration control.',
         image: getImage('JET-S150H60LACB.png'),
         tags: ['Distribution block', 'Vibration isolation', 'Industrial harness'],
+        specs: getSpecRecord('JET-S150H60LACB'),
       },
       {
         code: 'JET-S150H60LACC',
@@ -176,8 +345,10 @@ export const productCatalog: ProductCategory[] = [
         description: 'Performance-tuned for demanding fabrication cells with high airflow peaks.',
         image: getImage('JET-S150H60LACC.png'),
         tags: ['High peak capacity', 'Fabrication cell ready', 'Hardened guards'],
+        specs: getSpecRecord('JET-S150H60LACC'),
       },
     ],
+    specFields: jetSpecFields,
   },
   {
     slug: 'silent-series',
@@ -226,6 +397,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Compact, whisper-quiet unit ideal for small clinical suites.',
         image: getImage('SILENT-S150H12LACB.png'),
         tags: ['Low acoustic footprint', 'Dual outlet ready', 'Plug-and-play'],
+        specs: getSpecRecord('SILENT-S150H12LACB'),
       },
       {
         code: 'SILENT-S150H12LACC',
@@ -233,6 +405,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Includes intake filtration and medical-grade fittings.',
         image: getImage('SILENT-S150H12LACC.png'),
         tags: ['HEPA intake filter', 'Medical-grade fittings', '24/7 assurance'],
+        specs: getSpecRecord('SILENT-S150H12LACC'),
       },
       {
         code: 'SILENT-S150H25LACB',
@@ -240,6 +413,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Scales quietly for multi-bench laboratory applications.',
         image: getImage('SILENT-S150H25LACB.png'),
         tags: ['Multi-bench capacity', 'Dryer ready', 'Low vibration'],
+        specs: getSpecRecord('SILENT-S150H25LACB'),
       },
       {
         code: 'SILENT-S150H25LACC',
@@ -247,6 +421,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Enhanced condensate management for sterile workflows.',
         image: getImage('SILENT-S150H25LACC.png'),
         tags: ['Condensate routing', 'Washdown friendly', 'Hygienic design'],
+        specs: getSpecRecord('SILENT-S150H25LACC'),
       },
       {
         code: 'SILENT-S150H40LACB',
@@ -254,6 +429,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'High-flow oil-free air with calibrated regulation for instruments.',
         image: getImage('SILENT-S150H40LACB.png'),
         tags: ['High-flow stability', 'Instrument ready', 'Precision regulators'],
+        specs: getSpecRecord('SILENT-S150H40LACB'),
       },
       {
         code: 'SILENT-S150H40LACC',
@@ -261,6 +437,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Adds acoustic canopy and remote monitoring suite.',
         image: getImage('SILENT-S150H40LACC.png'),
         tags: ['Acoustic canopy', 'Monitoring gateway', 'Facility integration'],
+        specs: getSpecRecord('SILENT-S150H40LACC'),
       },
       {
         code: 'SILENT-S150H60LACB',
@@ -268,6 +445,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Serves larger healthcare departments with stable oil-free delivery.',
         image: getImage('SILENT-S150H60LACB.png'),
         tags: ['High capacity', 'Facility tie-in', 'Optimised duty cycle'],
+        specs: getSpecRecord('SILENT-S150H60LACB'),
       },
       {
         code: 'SILENT-S150H60LACC',
@@ -275,6 +453,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Regulatory-ready package with full documentation and alarms.',
         image: getImage('SILENT-S150H60LACC.png'),
         tags: ['Regulatory pack', 'Alarm stack', 'Documented QC'],
+        specs: getSpecRecord('SILENT-S150H60LACC'),
       },
       {
         code: 'SILENT-S300H80LACB',
@@ -282,6 +461,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Twin-motor architecture keeps acoustic levels low even at peak draw.',
         image: getImage('SILENT-S300H80LACB.png'),
         tags: ['Twin motor', 'Low acoustic load', 'Peak resiliency'],
+        specs: getSpecRecord('SILENT-S300H80LACB'),
       },
       {
         code: 'SILENT-S300H80LACC',
@@ -289,6 +469,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Hygienic cladding and redundant filtration for clean environments.',
         image: getImage('SILENT-S300H80LACC.png'),
         tags: ['Hygienic cladding', 'Dual filtration', 'Continuous compliance'],
+        specs: getSpecRecord('SILENT-S300H80LACC'),
       },
       {
         code: 'SILENT-S300H105LACB',
@@ -296,6 +477,7 @@ export const productCatalog: ProductCategory[] = [
         description: 'Supports networked distribution with balanced, oil-free airflow.',
         image: getImage('SILENT-S300H105LACB.png'),
         tags: ['Network-ready', 'Digital monitoring', 'Large capacity'],
+        specs: getSpecRecord('SILENT-S300H105LACB'),
       },
       {
         code: 'SILENT-S300H105LACC',
@@ -303,8 +485,10 @@ export const productCatalog: ProductCategory[] = [
         description: 'Acoustic shell and vibration isolation for sound-critical spaces.',
         image: getImage('SILENT-S300H105LACC.png'),
         tags: ['Ultra-quiet', 'Isolation mounts', 'Sound critical'],
+        specs: getSpecRecord('SILENT-S300H105LACC'),
       },
     ],
+    specFields: silentSpecFields,
   },
   {
     slug: 'spider-series',
@@ -347,13 +531,31 @@ export const productCatalog: ProductCategory[] = [
     ],
     models: [
       {
-        code: 'SPIDER',
-        title: 'SPIDER Modular Vulcanizer',
-        description: 'Core SPIDER platform configurable for both radial and bias tyre repairs.',
+        code: 'SPIDER-S0750WM',
+        title: 'SPIDER S0750 • Field Kit',
+        description: 'Portable vulcanizer with compact heating plate for rapid roadside repairs.',
         image: getImage('SPIDER.png'),
-        tags: ['Modular arms', 'Rapid cure cycles', 'Field-ready kit'],
+        tags: ['750 W', 'Compact plate', 'Field ready'],
+        specs: getSpecRecord('SPIDER-S0750WM'),
+      },
+      {
+        code: 'SPIDER-S1000WA',
+        title: 'SPIDER S1000 • Workshop Pack',
+        description: 'Balanced footprint ideal for service bays needing quick turnaround.',
+        image: getImage('SPIDER.png'),
+        tags: ['1000 W', 'Workshop tuned', 'Stable clamping'],
+        specs: getSpecRecord('SPIDER-S1000WA'),
+      },
+      {
+        code: 'SPIDER-S1500WA',
+        title: 'SPIDER S1500 • Industrial Pack',
+        description: 'High-output assembly built for industrial maintenance crews.',
+        image: getImage('SPIDER.png'),
+        tags: ['1500 W', 'Industrial duty', 'Extended plate'],
+        specs: getSpecRecord('SPIDER-S1500WA'),
       },
     ],
+    specFields: spiderSpecFields,
   },
   {
     slug: 'force-series',
@@ -396,13 +598,15 @@ export const productCatalog: ProductCategory[] = [
     ],
     models: [
       {
-        code: 'FORCE-S4P1PPS',
-        title: 'FORCE S4P1PPS Pressure Switch',
+        code: 'FORCE-S4P1P',
+        title: 'FORCE S4P1P Pressure Switch',
         description: '4-port pressure switch with adjustable cut-in and cut-out points.',
         image: getImage('FORCE-S4P1PPS.png'),
         tags: ['Powder-coated housing', 'Auto reset', 'Compressor ready'],
+        specs: getSpecRecord('FORCE-S4P1P'),
       },
     ],
+    specFields: forceSpecFields,
   },
 ]
 
