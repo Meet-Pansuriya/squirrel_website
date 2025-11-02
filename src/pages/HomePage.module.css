@@ -40,7 +40,7 @@
   gap: 0.75rem;
   padding: 0.85rem 1.5rem;
   background-color: var(--color-primary);
-  color: white;
+  color: #ffffff;
   border-radius: 999px;
   font-weight: 600;
   font-size: 0.95rem;
@@ -52,6 +52,7 @@
 .primaryLink:focus-visible {
   transform: translateY(-1px);
   box-shadow: 0 24px 48px rgba(13, 127, 242, 0.22);
+  color: #ffffff;
 }
 
 .secondaryLink {
@@ -141,57 +142,96 @@
   color: var(--color-text-faint);
 }
 
-.productGrid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-
-.productCard {
-  position: relative;
-  border: 1px solid rgba(16, 20, 24, 0.08);
-  border-radius: 18px;
-  background: var(--color-surface);
-  padding: 1.75rem;
+.familyList {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 1.75rem;
-  box-shadow: 0 20px 45px rgba(16, 20, 24, 0.05);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  gap: clamp(2.5rem, 6vw, 3.75rem);
+  margin-top: 1.5rem;
 }
 
-.productCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 50px rgba(16, 20, 24, 0.08);
+.familyRow {
+  display: grid;
+  gap: clamp(1.75rem, 5vw, 3.5rem);
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  align-items: center;
+  padding-top: clamp(2rem, 5vw, 3rem);
+  border-top: 1px solid rgba(16, 20, 24, 0.08);
 }
 
-.productImageFrame {
-  width: 100%;
-  aspect-ratio: 4/3;
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(13, 127, 242, 0.08), rgba(13, 127, 242, 0.02));
-  border: 1px solid rgba(13, 127, 242, 0.12);
-  padding: 1.5rem;
+.familyRow:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.familyMedia {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 20px;
+  border: 1px solid rgba(13, 127, 242, 0.12);
+  background: linear-gradient(145deg, rgba(13, 127, 242, 0.08), rgba(255, 255, 255, 0.9));
 }
 
-.productImage {
+.familyMedia img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
 }
 
-.productCard h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
+.familyBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.productCard p {
-  font-size: 0.9rem;
+.familyHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.familyHeader h3 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.familyHeader p {
+  font-size: 0.98rem;
   color: var(--color-text-subtle);
+  line-height: 1.7;
+  max-width: 540px;
+}
+
+.familyMetrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.familyMetrics li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(16, 20, 24, 0.08);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.familyMetrics span {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.familyMetrics strong {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .productLink {
@@ -201,6 +241,7 @@
   color: var(--color-primary);
   font-weight: 600;
   font-size: 0.9rem;
+  margin-top: 0.25rem;
 }
 
 .valueGrid {

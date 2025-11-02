@@ -45,6 +45,7 @@ const ProductDetailPage = () => {
   const category = productSlug ? productCatalogBySlug[productSlug] : undefined
 
   const [activeModelCode, setActiveModelCode] = useState<string>()
+  const [isZoomed, setIsZoomed] = useState(false)
 
   useEffect(() => {
     if (category?.models.length) {
@@ -52,12 +53,29 @@ const ProductDetailPage = () => {
     }
   }, [category])
 
+  useEffect(() => {
+    setIsZoomed(false)
+  }, [activeModelCode])
+
   const selectedModel = useMemo(() => {
     if (!category) {
       return undefined
     }
     return category.models.find((model) => model.code === activeModelCode) ?? category.models[0]
   }, [activeModelCode, category])
+
+  useEffect(() => {
+    if (!isZoomed) {
+      return
+    }
+    const handler = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsZoomed(false)
+      }
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [isZoomed])
 
   if (!category || !selectedModel) {
     return (
@@ -138,7 +156,15 @@ const ProductDetailPage = () => {
                     ) : null}
                   </div>
                   <div className={styles.modelMedia}>
-                    <img src={selectedModel.image} alt={`${selectedModel.title} render`} loading="lazy" />
+                    <button
+                      type="button"
+                      className={styles.zoomButton}
+                      onClick={() => setIsZoomed(true)}
+                      aria-label="Open large product image"
+                    >
+                      <img src={selectedModel.image} alt={`${selectedModel.title} render`} loading="lazy" />
+                      <span className={styles.zoomHint}>Click to zoom</span>
+                    </button>
                   </div>
                 </div>
 
@@ -209,6 +235,35 @@ const ProductDetailPage = () => {
           <a href="mailto:contact@squirrel-engitech.com">contact@squirrel-engitech.com</a>
         </div>
       </PageSection>
+
+      <AnimatePresence>
+        {isZoomed ? (
+          <motion.div
+            className={styles.zoomOverlay}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setIsZoomed(false)}
+          >
+            <motion.div
+              className={styles.zoomContainer}
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button type="button" className={styles.zoomClose} onClick={() => setIsZoomed(false)}>
+                Close ×
+              </button>
+              <div className={styles.zoomFrame}>
+                <img src={selectedModel.image} alt={`${selectedModel.title} zoomed`} />
+              </div>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </>
   )
 }

@@ -85,32 +85,40 @@ const HomePage = () => {
           title="Product Families"
           description="A curated selection of our core product lines, engineered for reliability and performance."
         />
-        <div className={styles.productGrid}>
+        <div className={styles.familyList}>
           {productCatalog.map((category) => {
             const primaryMetric = category.metrics[0]
             const secondaryMetric = category.metrics[1]
 
             return (
-              <div key={category.slug} className={styles.productCard}>
-                <div>
-                  <div className={styles.productImageFrame}>
-                    <img
-                      src={category.models[0]?.image}
-                      alt={`${category.shortName} equipment`}
-                      className={styles.productImage}
-                    />
-                  </div>
+              <article key={category.slug} className={styles.familyRow}>
+                <div className={styles.familyMedia}>
+                  <img src={category.models[0]?.image} alt={`${category.shortName} equipment`} loading="lazy" />
                 </div>
-                <div>
-                  <h3>{category.name}</h3>
-                  <p>
-                    {primaryMetric?.value} · {secondaryMetric?.value}
-                  </p>
+                <div className={styles.familyBody}>
+                  <header className={styles.familyHeader}>
+                    <h3>{category.name}</h3>
+                    <p>{category.overview}</p>
+                  </header>
+                  <ul className={styles.familyMetrics}>
+                    {primaryMetric ? (
+                      <li>
+                        <span>{primaryMetric.label}</span>
+                        <strong>{primaryMetric.value}</strong>
+                      </li>
+                    ) : null}
+                    {secondaryMetric ? (
+                      <li>
+                        <span>{secondaryMetric.label}</span>
+                        <strong>{secondaryMetric.value}</strong>
+                      </li>
+                    ) : null}
+                  </ul>
+                  <Link to={`/products/${category.slug}`} className={styles.productLink}>
+                    Explore models <span aria-hidden>→</span>
+                  </Link>
                 </div>
-                <Link to={`/products/${category.slug}`} className={styles.productLink}>
-                  Explore models <span aria-hidden>→</span>
-                </Link>
-              </div>
+              </article>
             )
           })}
         </div>

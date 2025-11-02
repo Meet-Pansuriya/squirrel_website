@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Footer from './Footer'
 import Header from './Header'
@@ -17,6 +18,10 @@ const pageTransition = {
 
 const AppLayout = () => {
   const location = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [location.pathname])
 
   return (
     <div className={styles.shell}>
