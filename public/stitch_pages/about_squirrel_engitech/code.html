@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vision &amp; About - Squirrel Engitech</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#4A4A4A", // Dark Grey
+                    "background-light": "#FFFFFF", // Pure white for light mode
+                    "background-dark": "#111111", // Near black for dark mode
+                    "text-light": "#4A4A4A", // Dark Grey for text in light mode
+                    "text-dark": "#E0E0E0", // Light gray for text in dark mode
+                    "border-light": "#F0F0F0", // Very light gray for borders
+                    "border-dark": "#2A2A2A", // Darker border for dark mode
+                    "accent-light": "#F8F8F8", // Soft gray accent
+                    "accent-dark": "#191919", // Dark accent
+                },
+                fontFamily: {
+                    "display": ["Space Grotesk", "sans-serif"]
+                },
+                borderRadius: {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+            },
+        },
+    }
+</script>
+<style>
+    .blueprint-bg-partial {
+        background-image:
+            linear-gradient(to right, #F0F0F0 1px, transparent 1px),
+            linear-gradient(to bottom, #F0F0F0 1px, transparent 1px);
+        background-size: 80px 80px;
+    }
+    .dark .blueprint-bg-partial {
+        background-image:
+            linear-gradient(to right, rgba(42, 42, 42, 0.5) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(42, 42, 42, 0.5) 1px, transparent 1px);
+    }
+</style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 sm:px-10 md:px-20 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-5xl flex-1 relative">
+<div class="absolute top-0 -right-40 -z-10 h-full w-96 blueprint-bg-partial [mask-image:radial-gradient(ellipse_at_top_right,rgba(0,0,0,0.3)_0%,transparent_70%)] dark:[mask-image:radial-gradient(ellipse_at_top_right,rgba(0,0,0,0.5)_0%,transparent_70%)]"></div>
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light dark:border-border-dark px-2 sm:px-4 md:px-10 py-4">
+<div class="flex items-center gap-4 text-primary dark:text-text-dark">
+<div class="size-5">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Squirrel Engitech</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-sm font-medium leading-normal text-text-light/80 dark:text-text-dark/80 hover:text-text-light dark:hover:text-text-dark" href="#">Home</a>
+<a class="text-sm font-medium leading-normal text-text-light/80 dark:text-text-dark/80 hover:text-text-light dark:hover:text-text-dark" href="#">Services</a>
+<a class="text-sm font-medium leading-normal text-text-light dark:text-white" href="#">Vision &amp; About</a>
+<a class="text-sm font-medium leading-normal text-text-light/80 dark:text-text-dark/80 hover:text-text-light dark:hover:text-text-dark" href="#">Contact</a>
+</div>
+</div>
+</header>
+<main class="py-16 md:py-24 px-4 sm:px-6 md:px-10 space-y-20">
+<section class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-16">
+<div class="flex flex-col">
+<h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-tighter">Purpose-Driven Engineering</h1>
+</div>
+<div class="flex flex-col gap-4 pt-2">
+<div class="flex flex-col gap-1">
+<h2 class="text-lg font-semibold tracking-wide">Our Vision</h2>
+<p class="text-base font-normal leading-relaxed opacity-90">To be the definitive standard for engineering excellence, creating systems so reliable and integrated they become the silent, foundational framework of progress.</p>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-lg font-semibold tracking-wide">Our Mission</h2>
+<p class="text-base font-normal leading-relaxed opacity-90">To transform abstract challenges into tangible, enduring solutions through meticulous design, uncompromising quality, and a deep-seated commitment to partnership and innovation.</p>
+</div>
+</div>
+</section>
+<section>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-border-light dark:bg-border-dark border border-border-light dark:border-border-dark">
+<div class="flex flex-1 flex-col gap-4 p-6 bg-background-light dark:bg-accent-dark">
+<span class="material-symbols-outlined text-4xl text-primary dark:text-text-dark/90" style="font-variation-settings: 'wght' 300;">straighten</span>
+<div class="flex flex-col gap-1">
+<h2 class="text-base font-bold leading-tight">Precision</h2>
+<p class="text-sm font-normal leading-normal opacity-80">Meticulous design and flawless execution are the cornerstones of our process.</p>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-4 p-6 bg-background-light dark:bg-accent-dark">
+<span class="material-symbols-outlined text-4xl text-primary dark:text-text-dark/90" style="font-variation-settings: 'wght' 300;">verified</span>
+<div class="flex flex-col gap-1">
+<h2 class="text-base font-bold leading-tight">Reliability</h2>
+<p class="text-sm font-normal leading-normal opacity-80">Rigorous assurance protocols guarantee performance under all conditions.</p>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-4 p-6 bg-background-light dark:bg-accent-dark">
+<span class="material-symbols-outlined text-4xl text-primary dark:text-text-dark/90" style="font-variation-settings: 'wght' 300;">all_inclusive</span>
+<div class="flex flex-col gap-1">
+<h2 class="text-base font-bold leading-tight">Longevity</h2>
+<p class="text-sm font-normal leading-normal opacity-80">We engineer robust systems designed to withstand the test of time and utility.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+<div class="flex flex-col gap-6">
+<h3 class="text-2xl font-bold leading-tight tracking-tight">The Engitech Philosophy</h3>
+<div class="flex flex-col gap-4">
+<p class="text-base font-normal leading-relaxed opacity-90">At Squirrel Engitech, our philosophy is built on a foundation of integrity and a relentless pursuit of innovation. We believe that true engineering is a craft—a balance of art and science. It's about more than just function; it’s about creating solutions that are elegant, efficient, and inherently trustworthy.</p>
+<p class="text-base font-normal leading-relaxed opacity-90">We approach every project as a partnership, collaborating closely with our clients to understand their vision and translate it into reality. This collaborative spirit ensures that our solutions are not only technically superior but also perfectly aligned with strategic goals, delivering value that extends far beyond the initial build.</p>
+</div>
+</div>
+<div class="relative border border-border-light dark:border-border-dark p-8 md:p-12 h-80 flex items-center justify-center bg-accent-light dark:bg-accent-dark overflow-hidden">
+<div class="absolute inset-0 z-0">
+<svg class="stroke-current text-border-light dark:text-border-dark opacity-60" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="20" id="smallGrid" patternUnits="userSpaceOnUse" width="20">
+<path d="M 20 0 L 0 0 0 20" fill="none" stroke-width="0.5"></path>
+</pattern>
+<pattern height="80" id="grid" patternUnits="userSpaceOnUse" width="80">
+<rect fill="url(#smallGrid)" height="80" width="80"></rect>
+<path d="M 80 0 L 0 0 0 80" fill="none" stroke-width="1"></path>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<div class="relative z-10 w-full h-full">
+<svg class="w-full h-full stroke-primary dark:stroke-text-dark/90" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 300 150">
+<path d="M 30,75 A 45,45 0 0 1 120,75 A 45,45 0 0 1 30,75"></path>
+<path d="M 75,30 V 120 M 30,75 H 120"></path>
+<path d="M 170,40 h 100 M 170,110 h 100 M 170,75 h 30 l 40,-35 M 200,75 l 40,35"></path>
+<path d="M 170,40 v 70 M 270,40 v 70"></path>
+</svg>
+</div>
+</div>
+</section>
+</main>
+</div>
+</div>
+</div>
+</div>
+</body></html>

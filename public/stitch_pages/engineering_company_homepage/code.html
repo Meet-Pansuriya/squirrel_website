@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Precision Engineering</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0d7ff2",
+              "background-light": "#f5f7f8",
+              "background-dark": "#101922",
+              "text-light": "#111418",
+              "text-dark": "#f5f7f8"
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+        .blueprint-grid {
+            background-image:
+                linear-gradient(to right, rgba(229, 231, 235, 0.4) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(229, 231, 235, 0.4) 1px, transparent 1px);
+            background-size: 4rem 4rem;
+        }
+        .dark .blueprint-grid {
+             background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200/50 dark:border-white/10 px-6 md:px-10 py-4 bg-white/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center gap-4">
+<div class="size-5 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold tracking-tight">Precision Engineering</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Products</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">About Us</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dealers</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+</header>
+<main class="flex-grow pt-16">
+<div class="max-w-5xl mx-auto px-6 md:px-10">
+<section class="relative py-24 md:py-32">
+<div class="absolute inset-0 blueprint-grid -z-10"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="flex flex-col gap-4 text-left">
+<h1 class="text-5xl md:text-6xl font-bold tracking-tighter leading-tight">Engineering Precision. Shaping the Future.</h1>
+<p class="text-base text-gray-600 dark:text-gray-400">We deliver innovative solutions with unparalleled accuracy and craftsmanship, turning complex challenges into elegant realities.</p>
+</div>
+<div class="relative aspect-square">
+<div class="absolute inset-0 bg-center bg-no-repeat bg-contain" data-alt="Detailed monochrome line illustration of a compressor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDhVfqtzDhlkZXReZiYIbR_murMNAPvvaEqdZbo9wO-spPCeQijrIFze6G8qmLH4nbVyxBN9VaVo8Oenll0UdbK6h0KYMfvUIBOCA3fgIWmQ7zhg7S8e0c7O0wuu0B_dD_KN1ZAxkkzDMKfB-BqubAgyp1zVZS1f9V4me7-wxixovrzO-U5EVr5gLgOQp6zgOTtseqeOqb3RSWfhKCuYMHXZtg_F7YtpKnvXRB6w6_GN_GGMlE9oK9QqUkXco_gnXElWS_i_f_JEnw");'></div>
+</div>
+</div>
+</section>
+<section class="py-16">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="flex flex-col items-center justify-center text-center p-4 border border-gray-200/60 dark:border-white/10 rounded-lg">
+<p class="text-xl md:text-2xl font-semibold text-text-light dark:text-text-dark">8 bar</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">max pressure</p>
+</div>
+<div class="flex flex-col items-center justify-center text-center p-4 border border-gray-200/60 dark:border-white/10 rounded-lg">
+<p class="text-xl md:text-2xl font-semibold text-text-light dark:text-text-dark">22.8 CFM</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">air delivery</p>
+</div>
+<div class="flex flex-col items-center justify-center text-center p-4 border border-gray-200/60 dark:border-white/10 rounded-lg">
+<p class="text-xl md:text-2xl font-semibold text-text-light dark:text-text-dark">0.75–3.0 kW</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">motor range</p>
+</div>
+<div class="flex flex-col items-center justify-center text-center p-4 border border-gray-200/60 dark:border-white/10 rounded-lg">
+<p class="text-xl md:text-2xl font-semibold text-text-light dark:text-text-dark">&lt;70 dB</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Silent Series</p>
+</div>
+</div>
+</section>
+<section class="py-24 md:py-32 border-t border-gray-200/50 dark:border-white/10">
+<div class="flex flex-col gap-4 mb-12">
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight max-w-2xl">Product Families</h2>
+<p class="text-base text-gray-600 dark:text-gray-400 max-w-2xl">A curated selection of our core product lines, engineered for reliability and performance.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="flex flex-col justify-between gap-6 rounded-lg p-6 border border-gray-200/50 dark:border-white/10 bg-white dark:bg-background-dark shadow-sm transition-shadow hover:shadow-md">
+<div class="flex flex-col gap-4 items-start">
+<div class="w-full h-24 bg-contain bg-no-repeat bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBl5_nQ5K88yaGFaxDokdod967sKz_VsXfjwUEIkmvT06zJVRRdoP1N6wfhd2jZWaQTK93WokAs820QnYuwQFDl-67FVjM8mgYewgTUjJhM_2CzFIiYvT50-Soc9IAAyggV9A7ntPbNL8UFHClH8C0LPeYoCdbevsLHLXVk1r-K0yEv4TrbkKIWF98kTa2S_68nmPT1Bccbn_Un09Olhs7aoybB4IZ1liAFwQVYtsgnin46tRx69o_mYjvfhDdTiILLaCRBV989fNQ");' title="Line diagram of an oil-lubricated compressor"></div>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold">Oil-Lubricated Compressors</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">Up to 8 bar · 1.5 HP</p>
+</div>
+</div>
+<a class="text-sm font-medium text-primary hover:underline" href="#">Explore Models →</a>
+</div>
+<div class="flex flex-col justify-between gap-6 rounded-lg p-6 border border-gray-200/50 dark:border-white/10 bg-white dark:bg-background-dark shadow-sm transition-shadow hover:shadow-md">
+<div class="flex flex-col gap-4 items-start">
+<div class="w-full h-24 bg-contain bg-no-repeat bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBl5_nQ5K88yaGFaxDokdod967sKz_VsXfjwUEIkmvT06zJVRRdoP1N6wfhd2jZWaQTK93WokAs820QnYuwQFDl-67FVjM8mgYewgTUjJhM_2CzFIiYvT50-Soc9IAAyggV9A7ntPbNL8UFHClH8C0LPeYoCdbevsLHLXVk1r-K0yEv4TrbkKIWF98kTa2S_68nmPT1Bccbn_Un09Olhs7aoybB4IZ1liAFwQVYtsgnin46tRx69o_mYjvfhDdTiILLaCRBV989fNQ");' title="Line diagram of an oil-free silent compressor"></div>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold">Oil-Free Silent Compressors</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">&lt;70 dB · 3.0 kW</p>
+</div>
+</div>
+<a class="text-sm font-medium text-primary hover:underline" href="#">Explore Models →</a>
+</div>
+<div class="flex flex-col justify-between gap-6 rounded-lg p-6 border border-gray-200/50 dark:border-white/10 bg-white dark:bg-background-dark shadow-sm transition-shadow hover:shadow-md">
+<div class="flex flex-col gap-4 items-start">
+<div class="w-full h-24 bg-contain bg-no-repeat bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBl5_nQ5K88yaGFaxDokdod967sKz_VsXfjwUEIkmvT06zJVRRdoP1N6wfhd2jZWaQTK93WokAs820QnYuwQFDl-67FVjM8mgYewgTUjJhM_2CzFIiYvT50-Soc9IAAyggV9A7ntPbNL8UFHClH8C0LPeYoCdbevsLHLXVk1r-K0yEv4TrbkKIWF98kTa2S_68nmPT1Bccbn_Un09Olhs7aoybB4IZ1liAFwQVYtsgnin46tRx69o_mYjvfhDdTiILLaCRBV989fNQ");' title="Line diagram of a vulcanizing machine"></div>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold">Vulcanizing Machines</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">750–1500 W</p>
+</div>
+</div>
+<a class="text-sm font-medium text-primary hover:underline" href="#">Explore Models →</a>
+</div>
+<div class="flex flex-col justify-between gap-6 rounded-lg p-6 border border-gray-200/50 dark:border-white/10 bg-white dark:bg-background-dark shadow-sm transition-shadow hover:shadow-md">
+<div class="flex flex-col gap-4 items-start">
+<div class="w-full h-24 bg-contain bg-no-repeat bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBl5_nQ5K88yaGFaxDokdod967sKz_VsXfjwUEIkmvT06zJVRRdoP1N6wfhd2jZWaQTK93WokAs820QnYuwQFDl-67FVjM8mgYewgTUjJhM_2CzFIiYvT50-Soc9IAAyggV9A7ntPbNL8UFHClH8C0LPeYoCdbevsLHLXVk1r-K0yEv4TrbkKIWF98kTa2S_68nmPT1Bccbn_Un09Olhs7aoybB4IZ1liAFwQVYtsgnin46tRx69o_mYjvfhDdTiILLaCRBV989fNQ");' title="Line diagram of a pressure switch"></div>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold">Pressure Switches</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">150 psi · 4 port options</p>
+</div>
+</div>
+<a class="text-sm font-medium text-primary hover:underline" href="#">Explore Models →</a>
+</div>
+</div>
+</section>
+<section class="py-24 md:py-32 border-t border-gray-200/50 dark:border-white/10">
+<div class="flex flex-col gap-4 mb-12">
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight max-w-2xl">Why Choose Us</h2>
+<p class="text-base text-gray-600 dark:text-gray-400 max-w-2xl">Our principles guide every component we build and every relationship we foster.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 rounded-lg border border-gray-200/50 dark:border-white/10">
+<h3 class="text-sm font-bold tracking-widest uppercase">Unmatched Quality</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Built to perform, engineered to last.</p>
+</div>
+<div class="p-6 rounded-lg border border-gray-200/50 dark:border-white/10">
+<h3 class="text-sm font-bold tracking-widest uppercase">Comprehensive Range</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Solutions for every industrial application.</p>
+</div>
+<div class="p-6 rounded-lg border border-gray-200/50 dark:border-white/10">
+<h3 class="text-sm font-bold tracking-widest uppercase">Ethical Practices</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Integrity in our materials and methods.</p>
+</div>
+<div class="p-6 rounded-lg border border-gray-200/50 dark:border-white/10">
+<h3 class="text-sm font-bold tracking-widest uppercase">Competitive Pricing</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Premium engineering at an accessible value.</p>
+</div>
+<div class="p-6 rounded-lg border border-gray-200/50 dark:border-white/10">
+<h3 class="text-sm font-bold tracking-widest uppercase">Trust-Driven Relationships</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Partnerships founded on reliability.</p>
+</div>
+<div class="p-6 rounded-lg border border-gray-200/50 dark:border-white/10">
+<h3 class="text-sm font-bold tracking-widest uppercase">250+ Dealer Network</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Accessible service and support across India.</p>
+</div>
+</div>
+</section>
+<section class="py-24 md:py-32 border-t border-gray-200/50 dark:border-white/10">
+<div class="flex flex-col gap-4">
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight max-w-2xl">Our Commitment to Excellence</h2>
+<p class="text-base text-gray-600 dark:text-gray-400 max-w-3xl leading-relaxed">
+Rooted in decades of engineering excellence, our work is defined by an unwavering commitment to precision and reliability. We design and manufacture products of exceptional durability, building a legacy of quality that is trusted across India. Every component reflects our dedication to creating lasting value for our partners.
+</p>
+</div>
+</section>
+<section class="relative py-24 md:py-32 border-t border-gray-200/50 dark:border-white/10">
+<div class="absolute inset-0 blueprint-grid -z-10"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="w-full aspect-square bg-center bg-no-repeat bg-cover rounded-xl shadow-sm" data-alt="Clean, well-lit factory assembly line for compressors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDkt81Z4eUYePBLtCSmQ8fPLkKFOGKLw2LVAOJbGYRAn7hRGr7mO1gZkDuLUzTYL8wT0yyCmOMhWmv49TCpPpNKZaGBC324gmDPEC6CVQ-7Pvs7TkDHQq5Q5kR7a_WKuNEZLbcetrIHO5GhzRW6Tib9IqDInsAgcPnckXKE7liegnoFVEAvsvg6YXuxl-KZZbC5UTNsqN0KA4Jl0VYkv1cxNR2iyZkoWHM-LfAztf7nkUMm9JKcyDnPVLCsZ07hwoLxTyqsG6SeQSM");'></div>
+<div class="flex flex-col gap-6">
+<h3 class="text-2xl font-bold tracking-tight">Quality Control at Every Step</h3>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary !text-xl !font-light mt-0.5">check_circle</span>
+<span class="text-base text-gray-600 dark:text-gray-400">Precision manufacturing with state-of-the-art machinery.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary !text-xl !font-light mt-0.5">check_circle</span>
+<span class="text-base text-gray-600 dark:text-gray-400">Strict quality checks performed at each stage of production.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary !text-xl !font-light mt-0.5">check_circle</span>
+<span class="text-base text-gray-600 dark:text-gray-400">High-grade packaging (corrugated + EPS) for secure transit.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary !text-xl !font-light mt-0.5">check_circle</span>
+<span class="text-base text-gray-600 dark:text-gray-400">Commitment to reliable and timely delivery schedules.</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="text-center py-24 md:py-32 border-t border-gray-200/50 dark:border-white/10">
+<div class="flex flex-col items-center gap-4">
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight">Let's build together.</h2>
+<p class="text-base text-gray-600 dark:text-gray-400 max-w-xl">Have a project in mind or want to learn more about our capabilities? We'd love to hear from you.</p>
+<a class="inline-block mt-4 text-primary text-lg font-medium hover:underline" href="mailto:contact@precisioneng.com">
+                            contact@precisioneng.com
+                        </a>
+</div>
+</section>
+</div>
+</main>
+<footer class="border-t border-gray-200/50 dark:border-white/10">
+<div class="max-w-5xl mx-auto px-6 md:px-10 py-6">
+<div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+<p>© 2024 Precision Engineering. All Rights Reserved.</p>
+<div class="flex gap-4">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
