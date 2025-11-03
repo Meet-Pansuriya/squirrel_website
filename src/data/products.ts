@@ -3,6 +3,11 @@ import specsCsv from './squirrel_master_products.csv?raw'
 const productImageModules = import.meta.glob('../assets/Products/*.png', {
   eager: true,
   import: 'default',
+  query: {
+    w: '1200',
+    format: 'webp',
+    quality: '80',
+  },
 }) as Record<string, string>
 
 const getImage = (fileName: string) => {
